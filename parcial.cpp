@@ -5,9 +5,8 @@ using namespace std;
 struct Point {
     double x;
     double y;
-};
+};  
 
-//calcula la mayor magnitud y me retorna la posicion    
 double calcularMayorMagnitud(Point* puntos, int n, int &indiceMayorMagnitud) {
     double mayor = 0;
     indiceMayorMagnitud = 0;
@@ -23,8 +22,38 @@ double calcularMayorMagnitud(Point* puntos, int n, int &indiceMayorMagnitud) {
             indiceMayorMagnitud = i;
         }
     }
-
     return mayor;
+}
+
+void Elec(Point* puntos, int n) {
+    int opcion;
+    cout << "¿Cómo desea ingresar los puntos?\n";
+    cout << "1. Manualmente\n";
+    cout << "2. Usar predeterminados\n";
+    cout << "Seleccione una opción: ";
+    cin >> opcion;
+
+    if (opcion == 1) {
+        for (int i = 0; i < n; i++) {
+            cout << "Ingrese el punto " << i + 1 << " (x y): ";
+            cin >> puntos[i].x >> puntos[i].y;
+        }
+    } else {
+        cout << "Si se usa predeterminado es" << endl;
+        if (n >= 4) {
+            puntos[0] = {0, 0};
+            puntos[1] = {3, 4};
+            puntos[2] = {6, 8};
+            puntos[3] = {9, 12};
+            for (int i = 4; i < n; i++) {
+                puntos[i] = {double(i), double(i)};
+            }
+        } else {
+            for (int i = 0; i < n; i++) {
+                puntos[i] = {double(i), double(i)};
+            }
+        }
+    }
 }
 
 int main() {
@@ -34,17 +63,13 @@ int main() {
 
     Point* puntos = new Point[n];
 
-    for (int i = 0; i < n; i++) {
-        cout << "Ingrese el punto " << i + 1 << " (x y): ";
-        cin >> puntos[i].x >> puntos[i].y;
-    }
+    Elec(puntos, n);
 
     int indice;
     double mayorMagnitud = calcularMayorMagnitud(puntos, n, indice);
 
-    cout << "\nEl punto con mayor magnitud es: ("
-         << puntos[indice].x << ", "
-         << puntos[indice].y << ")"
+    cout << "\nEl punto con mayor magnitud es: (" 
+         << puntos[indice].x << ", " << puntos[indice].y << ")"
          << " con magnitud: " << mayorMagnitud << endl;
 
     return 0;
