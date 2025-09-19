@@ -25,7 +25,6 @@ double calcularMayorMagnitud(Point* puntos, int n, int &indiceMayorMagnitud) {
     return mayor;
 }
 
-// Nueva función para leer puntos (manual o predeterminados)
 void Elec(Point* puntos, int n) {
     int opcion;
     cout << "¿Cómo desea ingresar los puntos?\n";
@@ -64,7 +63,6 @@ int main() {
 
     Point* puntos = new Point[n];
 
-    // Ahora se usa leerPuntos en lugar de pedir siempre manualmente
     Elec(puntos, n);
 
     int indice;
