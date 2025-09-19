@@ -1,3 +1,7 @@
+//José Miguel Sedado Pulido  
+//Angye Valentina García Páramo  
+//Parcial-1corte
+
 #include <iostream>
 #include <cmath>
 using namespace std;
